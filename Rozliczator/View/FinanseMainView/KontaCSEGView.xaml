@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="KontaCSEGView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Rozliczator"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1000"
+            
+              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+       TextElement.FontWeight="Regular"
+       TextElement.FontSize="13"
+       TextOptions.TextFormattingMode="Ideal"
+       TextOptions.TextRenderingMode="Auto"
+       Background="{DynamicResource MaterialDesignPaper}"
+       FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />            
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+       
+             <Canvas  Grid.Row="0" Height="300" >
+              
+                <ContentControl   Height=" 300" Width=" 400">
+                    <local:WykresSubKonta  />
+                </ContentControl>
+                
+                <StackPanel Orientation="Vertical"  Canvas.Left="700" HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                        <Label VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Wykonaj operacje na koncie: " Margin="0,10,10,0"  />
+                       
+                    </StackPanel>
+
+                    <ComboBox VerticalAlignment="Bottom" x:Name="OperacjeComboBox" Text="{Binding RodzajOperacji}" Margin="3,20,0,0"/>
+                    <StackPanel Orientation="Horizontal"  Margin="0,20,0,0">
+                        <Label VerticalAlignment="Bottom" Margin="0,20,0,0" Content="Kwota"/>
+                        <TextBox TextAlignment="Center"  Width="80" Text="{Binding KwotaOperacji, Mode=TwoWay, StringFormat=\{0:0.00\}}" Margin="0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="0,30,0,0">
+                        <Label VerticalAlignment="Bottom" Margin="0,0,0,0" Content="Opis" Width="37"/>
+                        <TextBox TextAlignment="Center"  Width="200" Text="{Binding OpisOperacji, Mode=TwoWay, StringFormat=\{0:0.00\}}" Margin="0"/>
+                    </StackPanel>
+                    <Button Width="90" Margin="0,30,0,0" Click="Button_Click">wykonaj</Button>
+
+                </StackPanel>
+            </Canvas>
+
+            <StackPanel  Grid.Row="1" Height="50" Orientation="Horizontal" >
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0" Content="Konto PLN:"/>
+                <TextBox TextAlignment="Center" Width="80" Text="{Binding KontoCSEGHandle.KontoPLN, Mode=OneWay, StringFormat=\{0:0.00\}}" Margin="0"/>
+                <TextBox TextAlignment="Center" Width="30" Text="PLN" Margin="0"/>
+
+                <Label VerticalAlignment="Bottom" Margin="50,0,0,0" Content="Konto EUR:"/>
+                <TextBox TextAlignment="Center" Width="80" Text="{Binding KontoCSEGHandle.KontoEUR, Mode=OneWay, StringFormat=\{0:0.00\}}" Margin="0"/>
+                <TextBox TextAlignment="Center" Width="30" Text="EUR" Margin="0" />
+
+                <Label VerticalAlignment="Bottom" Margin="50,0,0,0" Content="Konto GBP:"/>
+                <TextBox TextAlignment="Center"  Width="80" Text="{Binding KontoCSEGHandle.KontoGBP, Mode=OneWay, StringFormat=\{0:0.00\}}" Margin="0"/>
+                <TextBox TextAlignment="Center" Width="30" Text="GBP" Margin="0"/>
+
+            </StackPanel>
+        </Grid>
+        <GridSplitter Margin="0,5,0,0" Grid.Row="1"  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Stretch" 
+                   ResizeBehavior="BasedOnAlignment"
+                  Height="10" Background="#FFBCBCBC"/>
+
+        <Grid Grid.Row="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Margin="10,5,0,0">Historia</Label>
+            
+            <DataGrid Grid.Row="1" Name="DataGridKontaCSEG" 
+                          
+                              VerticalAlignment="Stretch"
+                              AutoGenerateColumns="False"                              
+                              SelectionUnit="FullRow"
+                              CanUserAddRows="False"
+                              CanUserDeleteRows="False"                                      
+                              ScrollViewer.CanContentScroll="True" 
+                              ScrollViewer.VerticalScrollBarVisibility="Auto"
+                              ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                  HeadersVisibility="All">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Collapsed" SortDirection="Descending"/>
+                                <DataGridTextColumn Header="Konto PLN" Binding="{Binding KontoPLN, StringFormat=F2}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="Konto EUR" Binding="{Binding KontoEUR, StringFormat=F2}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="Konto GBP" Binding="{Binding KontoEUR, StringFormat=F2}"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="SK Spolka" Binding="{Binding SubKontoSpolka, StringFormat=F2}"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="SK Wspolnicy" Binding="{Binding SubKontoWspolnicy, StringFormat=F2}"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="SK VAT" Binding="{Binding SubKontoVAT, StringFormat=F2}"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="SK CIT" Binding="{Binding SubKontoCIT, StringFormat=F2}"  IsReadOnly="True" />
+                                <DataGridTextColumn Header="SK PIT" Binding="{Binding SubKontoPIT, StringFormat=F2}"  IsReadOnly="True" />                                
+
+                                <DataGridTextColumn Header="Opis" Binding="{Binding Opis}" Width="50"   IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Kwota" Binding="{Binding Kwota, StringFormat=F2}"  IsReadOnly="True" />
+                               
+                            </DataGrid.Columns>
+                            <DataGrid.ContextMenu>
+                                <ContextMenu>
+                                 
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                        </DataGrid>
+                
+            
+       </Grid>
+           
+
+     
+
+        
+    </Grid>
+</UserControl>

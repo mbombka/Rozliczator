@@ -1,0 +1,88 @@
+﻿<UserControl x:Class="DelegacjeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Rozliczator"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1000"
+            
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+       TextElement.FontWeight="Regular"
+       TextElement.FontSize="13"
+       TextOptions.TextFormattingMode="Ideal"
+       TextOptions.TextRenderingMode="Auto"
+       Background="{DynamicResource MaterialDesignPaper}"
+       FontFamily="{DynamicResource MaterialDesignFont}"
+             xmlns:Name="window">
+    <Grid VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140" />
+            <ColumnDefinition Width="*"/>
+            
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" Height="450" Width="140" >
+                <Button Click="Button_Delegacje">Dodaj Delegacje</Button>
+                <Button Click="Button_Wczytaj">Wczytaj z DB</Button>
+                
+                <Label Margin="0,30,0,0" >Filtruj</Label>
+                <Separator  />
+                <Label>Data od:</Label>
+                <DatePicker Name="DpFltrujOd"  Text="" SelectedDate="{Binding FilterDataOd}" >
+
+                </DatePicker>
+                <Label>Data do:</Label>
+                <DatePicker Name="DpFltrujDo" Text="" SelectedDate="{Binding FilterDataDo}">
+                </DatePicker>
+                <Label>Delegowany:</Label>
+                <ComboBox  Name="DelegowanyComboBox" SelectedItem="{Binding FilterDelegowany}"  >
+                </ComboBox>
+                <Label>Wyplacono:</Label>
+                <ComboBox  Name="ZaplaconoComboBox" SelectedItem="{Binding FilterZaplacono}" >
+                </ComboBox>
+
+                <Button Click="Button_Reset" Margin="0,30,0,0">Resetuj Filtry</Button>               
+
+            </StackPanel>
+            
+            
+            <DataGrid  Grid.Column="1" Grid.Row="0"  Name="DataGridDelegacje"                       
+                     
+                      AutoGenerateColumns="False"
+                      SelectionUnit="FullRow"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      MouseDoubleClick="DataGrid_MouseDoubleClick"
+                      ScrollViewer.CanContentScroll="True" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Visibility="Visible"/>
+                        <DataGridTextColumn Header="Delegowany" Binding="{Binding Delegowany}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Numer Delegacji" Binding="{Binding NumerDelegacji}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Data Wyjazdu" Binding="{Binding DataWyjazdu, StringFormat=\{0:dd.MM.yyyy\}}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="Data Powrotu" Binding="{Binding DataPowrotu, StringFormat=\{0:dd.MM.yyyy\}}"  IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Miesjce Wyjazdu" Binding="{Binding MiejsceWyjazdu}"  IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Kwota Delegacji" Binding="{Binding KwotaDelegacji, StringFormat={}{0:0.00}}" IsReadOnly="True"/>
+                        <DataGridCheckBoxColumn Header="Wysł." Width="60" Binding="{Binding Wyslano}" IsReadOnly="True"/>
+                        <DataGridCheckBoxColumn Header="Wypł." Width="60" Binding="{Binding Wyplacono}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Edytuj" FontSize="12" Click="DataGrid_RClick_Edytuj"/>
+                            <MenuItem Header="Dodaj" FontSize="12" Click="DataGrid_RClick_Dodaj"/>
+                            <Separator />
+                            <MenuItem Header="Usuń" FontSize="12"  Click="DataGrid_RClick_Usun"/>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                </DataGrid>           
+
+
+        
+    </Grid>
+</UserControl>
+

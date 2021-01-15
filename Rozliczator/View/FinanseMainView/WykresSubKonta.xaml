@@ -1,0 +1,214 @@
+﻿<UserControl x:Class="WykresSubKonta"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Rozliczator"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="300"
+             Width="400" Height="300"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+       TextElement.FontWeight="Regular"
+       TextElement.FontSize="13"
+       TextOptions.TextFormattingMode="Ideal"
+       TextOptions.TextRenderingMode="Auto"
+       Background="{DynamicResource MaterialDesignPaper}"
+       FontFamily="{DynamicResource MaterialDesignFont}">
+    <Canvas>
+        <!-- displaying pie chart from arcs-->
+        <Path Name="ArcSubKontoSpolka" StrokeThickness="30" Stroke="#FF55962C" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc1Start}">
+                            <PathFigure.Segments>
+                                <ArcSegment Size="{Binding ArcRadius}" 
+                                        RotationAngle="0"
+                                        IsLargeArc="{Binding Arc1Big}" 
+                                        SweepDirection="Counterclockwise"
+                                        Point="{Binding Arc2Start}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Path Name="ArcSubKontoWspolnicy" Stroke="Blue" StrokeThickness="30" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc2Start}">
+                            <PathFigure.Segments>
+                                <ArcSegment Size="{Binding ArcRadius}" 
+                                        RotationAngle="0"
+                                       IsLargeArc="{Binding Arc2Big}" 
+                                        SweepDirection="Counterclockwise"
+                                        Point="{Binding Arc3Start}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Path Name="ArcSubKontoVAT" Stroke="#FFD9D951" StrokeThickness="30" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc3Start}">
+                            <PathFigure.Segments>
+                                <ArcSegment Size="{Binding ArcRadius}" 
+                                        RotationAngle="0"
+                                       IsLargeArc="{Binding Arc3Big}" 
+                                        SweepDirection="Counterclockwise"
+                                        Point="{Binding Arc4Start}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Path Name="ArcSubKontoCIT" Stroke="#FFD07676" StrokeThickness="30" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc4Start}">
+                            <PathFigure.Segments>
+                                <ArcSegment Size="{Binding ArcRadius}" 
+                                        RotationAngle="0"
+                                        IsLargeArc="{Binding Arc4Big}" 
+                                        SweepDirection="Counterclockwise"
+                                        Point="{Binding Arc5Start}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Path Name="ArcSubKontoPITT" Stroke="#FF7F7A7A" StrokeThickness="30" >
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc5Start}">
+                            <PathFigure.Segments>
+                                <ArcSegment Size="{Binding ArcRadius}" 
+                                        RotationAngle="0"
+                                       IsLargeArc="{Binding Arc5Big}" 
+                                        SweepDirection="Counterclockwise"
+                                        Point="{Binding Arc1Start}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <!--- part for displaying nice lines -->
+        <Path Stroke="LightGray" StrokeThickness="2">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc1Middle}">
+                            <PathFigure.Segments>
+                                <LineSegment  Point="{Binding Arc1LineStart}"/>
+                                <LineSegment  Point="{Binding Arc1LineEnd}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <StackPanel Orientation="Horizontal"   Canvas.Top="{Binding Arc1Label.Y}"  Canvas.Left="{Binding Arc1Label.X}" >
+            <Label >Rachunek bieżący:</Label>
+            <TextBlock Text="{Binding KontoCSEGHandle.SubKontoSpolka}" VerticalAlignment="Center" />
+            <Label >PLN</Label>
+        </StackPanel>
+
+        <Path Stroke="LightGray" StrokeThickness="2">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc2Middle}">
+                            <PathFigure.Segments>
+                                <LineSegment  Point="{Binding Arc2LineStart}"/>
+                                <LineSegment  Point="{Binding Arc2LineEnd}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <StackPanel Orientation="Horizontal"   Canvas.Top="{Binding Arc2Label.Y}"  Canvas.Left="{Binding Arc2Label.X}" >
+            <Label >SubKontoWspolnicy:</Label>
+            <TextBlock Text="{Binding KontoCSEGHandle.SubKontoWspolnicy}" VerticalAlignment="Center"  />
+            <Label >PLN</Label>
+        </StackPanel>
+
+        <Path Stroke="LightGray" StrokeThickness="2">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc3Middle}">
+                            <PathFigure.Segments>
+                                <LineSegment  Point="{Binding Arc3LineStart}"/>
+                                <LineSegment  Point="{Binding Arc3LineEnd}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <StackPanel Orientation="Horizontal"   Canvas.Top="{Binding Arc3Label.Y}"  Canvas.Left="{Binding Arc3Label.X}" >
+            <Label >SubKontoVAT:</Label>
+            <TextBlock Text="{Binding KontoCSEGHandle.SubKontoVAT}" VerticalAlignment="Center" />
+            <Label >PLN</Label>
+        </StackPanel>
+
+        <Path Stroke="LightGray" StrokeThickness="2">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc4Middle}">
+                            <PathFigure.Segments>
+                                <LineSegment  Point="{Binding Arc4LineStart}"/>
+                                <LineSegment  Point="{Binding Arc4LineEnd}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <StackPanel Orientation="Horizontal"   Canvas.Top="{Binding Arc4Label.Y}"  Canvas.Left="{Binding Arc4Label.X}" >
+            <Label >SubKontoCIT:</Label>
+            <TextBlock Text="{Binding KontoCSEGHandle.SubKontoCIT}" VerticalAlignment="Center"  />
+            <Label >PLN</Label>
+        </StackPanel>
+
+        <Path Stroke="LightGray" StrokeThickness="2">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigure StartPoint="{Binding Arc5Middle}">
+                            <PathFigure.Segments>
+                                <LineSegment  Point="{Binding Arc5LineStart}"/>
+                                <LineSegment  Point="{Binding Arc5LineEnd}"/>
+                            </PathFigure.Segments>
+                        </PathFigure>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <StackPanel Orientation="Horizontal"   Canvas.Top="{Binding Arc5Label.Y}"  Canvas.Left="{Binding Arc5Label.X}" >
+            <Label >SubKontoPIT:</Label>
+            <TextBlock Text="{Binding KontoCSEGHandle.SubKontoPIT}" VerticalAlignment="Center" />
+            <Label >PLN</Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"   Canvas.Top="{Binding MiddleLabel.Y}"  Canvas.Left="{Binding MiddleLabel.X}" >
+            <TextBlock Text="{Binding MajatekSpolkiPLN}" FontWeight="Bold" FontSize="14"  VerticalAlignment="Center" />
+            <Label FontWeight="Bold" >PLN</Label>
+        </StackPanel>
+
+
+       
+    </Canvas>
+</UserControl>

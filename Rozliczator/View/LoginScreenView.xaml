@@ -1,0 +1,55 @@
+﻿<Window x:Class="LoginScreenView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rozliczator"
+        mc:Ignorable="d"
+        Title="LoginScreenView" Height="300" Width="600"
+        WindowStartupLocation="CenterScreen"   
+           
+       FontFamily="{DynamicResource MaterialDesignFont}"
+        SizeToContent="WidthAndHeight"
+        FocusManager.FocusedElement="{Binding ElementName=txtUserName}" 
+        AllowsTransparency="True" WindowStyle="None"
+        Icon="/Images/cseg_icon_32_32.ico">
+    <Window.Background>
+        
+        <SolidColorBrush Opacity="0.9" Color="#FFFAFAFF"/>
+    </Window.Background>
+    <Window.Resources>
+        <DropShadowEffect x:Key="shadowWindow"
+    Color="Black"
+    Opacity="1"
+    ShadowDepth="12" />
+
+        <Style TargetType="Button" x:Key="WindowButtons">
+            <Setter Property="Opacity" Value="1"/>
+        </Style>
+    </Window.Resources>
+    <Border CornerRadius="10"
+        
+        BorderThickness="4"        
+       
+        Margin="4"
+        Padding="24">
+
+
+
+        <Grid  >
+            <Image HorizontalAlignment="Left" Height="201"  Source="/Images/cseg_logo.png"  Margin="10,10,0,0" VerticalAlignment="Top" Width="186" />
+            <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="36" Margin="271,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="254" Foreground="#FF233737" FontSize="18"  />
+            <Label Content="Login" HorizontalAlignment="Left" Margin="201,35,0,0" VerticalAlignment="Top" Width="65" Height="36" Foreground="#FF233737" FontSize="18"/>
+            <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="37" Margin="271,76,0,0"  VerticalAlignment="Top" Width="254" Foreground="#FF233737" FontSize="18"/>
+            <Label Content="Hasło" HorizontalAlignment="Left" Margin="201,77,0,0" VerticalAlignment="Top" Width="65" Height="36" Foreground="#FF233737" FontSize="18"/>
+            <Button Click="Cancel"  Content="Cancel" Height="Auto" Margin="201,176,192,10" IsCancel="True"/>
+            <Button Click="Login"  IsDefault="True" Content="OK" Height="Auto" Margin="378,176,11,10"/>
+            <CheckBox x:Name="checkboxPamietaj" Content="Pamietaj" HorizontalAlignment="Left" Margin="201,132,0,0" VerticalAlignment="Top" Width="241" Height="25" Foreground="#FF233737" BorderBrush="#FFFAFAFA" Background="White"/>
+            <TextBlock TextAlignment="Center" Margin="0,245,0,-25" x:Name="InfoTextBlock"  VerticalAlignment="Top" Width="536" Foreground="#FF233737"/>
+
+
+
+        </Grid>
+
+    </Border>
+</Window>

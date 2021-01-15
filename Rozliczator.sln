@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Rozliczator", "Rozliczator\Rozliczator.vbproj", "{7DAEF638-DC47-45C1-B2CA-F75F29E40E67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5DB1A303-BD7A-4072-A471-4880366FB3C5}"
+	ProjectSection(SolutionItems) = preProject
+		logo_icon2.ico = logo_icon2.ico
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DAEF638-DC47-45C1-B2CA-F75F29E40E67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DAEF638-DC47-45C1-B2CA-F75F29E40E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DAEF638-DC47-45C1-B2CA-F75F29E40E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DAEF638-DC47-45C1-B2CA-F75F29E40E67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CA4D4DA-7983-4410-965A-2312A0A88211}
+	EndGlobalSection
+EndGlobal

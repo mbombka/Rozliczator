@@ -1,0 +1,293 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Rozliczator
+</name>
+</assembly>
+<members>
+<member name="T:Rozliczator.My.MyWpfExtension">
+ <summary>
+ Module used to define the properties that are available in the My Namespace for WPF
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:Rozliczator.My.MyWpfExtension.Application">
+ <summary>
+ Returns the application object for the running application
+ </summary>
+</member>
+<member name="P:Rozliczator.My.MyWpfExtension.Computer">
+ <summary>
+ Returns information about the host computer.
+ </summary>
+</member>
+<member name="P:Rozliczator.My.MyWpfExtension.User">
+ <summary>
+ Returns information for the current user.  If you wish to run the application with the current 
+ Windows user credentials, call My.User.InitializeWithWindowsUser().
+ </summary>
+</member>
+<member name="P:Rozliczator.My.MyWpfExtension.Log">
+ <summary>
+ Returns the application log. The listeners can be configured by the application's configuration file.
+ </summary>
+</member>
+<member name="P:Rozliczator.My.MyWpfExtension.Windows">
+ <summary>
+ Returns the collection of Windows defined in the project.
+ </summary>
+</member>
+<member name="T:Rozliczator.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Rozliczator.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Rozliczator.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Rozliczator.DelegacjeView">
+<summary>
+DelegacjeView
+</summary>
+</member>
+<member name="M:Rozliczator.DelegacjeView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.DodajDelegacjeView">
+<summary>
+DodajDelegacjeView
+</summary>
+</member>
+<member name="M:Rozliczator.DodajDelegacjeView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.DodajFaktureKosztowaView">
+<summary>
+DodajFaktureKosztowaView
+</summary>
+</member>
+<member name="M:Rozliczator.DodajFaktureKosztowaView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.DodajFakturePrzychodowaView">
+<summary>
+DodajFakturePrzychodowaView
+</summary>
+</member>
+<member name="M:Rozliczator.DodajFakturePrzychodowaView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.DodajUmowaDzieloView">
+<summary>
+DodajUmowaDzieloView
+</summary>
+</member>
+<member name="M:Rozliczator.DodajUmowaDzieloView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.DokumentyMainView">
+<summary>
+DokumentyMainView
+</summary>
+</member>
+<member name="M:Rozliczator.DokumentyMainView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.FakturyKosztoweView">
+<summary>
+FakturyKosztoweView
+</summary>
+</member>
+<member name="M:Rozliczator.FakturyKosztoweView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.FakturyPrzychodoweView">
+<summary>
+FakturyPrzychodoweView
+</summary>
+</member>
+<member name="M:Rozliczator.FakturyPrzychodoweView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.FinanseMainView">
+<summary>
+FinanseMainView
+</summary>
+</member>
+<member name="M:Rozliczator.FinanseMainView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.KontaCSEGView">
+<summary>
+KontaCSEGView
+</summary>
+</member>
+<member name="M:Rozliczator.KontaCSEGView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.KontaWspolnicyView">
+<summary>
+KontaWspolnicyView
+</summary>
+</member>
+<member name="M:Rozliczator.KontaWspolnicyView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.KontrahenciMainView">
+<summary>
+KontrahenciMainView
+</summary>
+</member>
+<member name="M:Rozliczator.KontrahenciMainView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.KontrahenciView">
+<summary>
+KontrahenciView
+</summary>
+</member>
+<member name="M:Rozliczator.KontrahenciView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.LoginScreenView">
+<summary>
+LoginScreenView
+</summary>
+</member>
+<member name="M:Rozliczator.LoginScreenView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.MessageBoxCustom">
+<summary>
+MessageBoxCustom
+</summary>
+</member>
+<member name="M:Rozliczator.MessageBoxCustom.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.UmowyODzieloView">
+<summary>
+UmowyODzieloView
+</summary>
+</member>
+<member name="M:Rozliczator.UmowyODzieloView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.WykresSubKonta">
+<summary>
+WykresSubKonta
+</summary>
+</member>
+<member name="M:Rozliczator.WykresSubKonta.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.ZestawieniaMiesieczneView">
+<summary>
+ZestawieniaMiesieczneView
+</summary>
+</member>
+<member name="M:Rozliczator.ZestawieniaMiesieczneView.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.Application">
+<summary>
+Application
+</summary>
+</member>
+<member name="M:Rozliczator.Application.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="M:Rozliczator.Application.Main">
+<summary>
+Application Entry Point.
+</summary>
+</member>
+<member name="T:Rozliczator.MainWindow">
+<summary>
+MainWindow
+</summary>
+</member>
+<member name="M:Rozliczator.MainWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Rozliczator.XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+<summary>
+GeneratedInternalTypeHelper
+</summary>
+</member>
+<member name="M:Rozliczator.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+<summary>
+CreateInstance
+</summary>
+</member>
+<member name="M:Rozliczator.XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+<summary>
+GetPropertyValue
+</summary>
+</member>
+<member name="M:Rozliczator.XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+<summary>
+SetPropertyValue
+</summary>
+</member>
+<member name="M:Rozliczator.XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+<summary>
+CreateDelegate
+</summary>
+</member>
+<member name="M:Rozliczator.XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+<summary>
+AddEventHandler
+</summary>
+</member>
+</members>
+</doc>

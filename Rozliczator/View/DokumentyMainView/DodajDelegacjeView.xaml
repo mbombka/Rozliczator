@@ -1,0 +1,144 @@
+﻿<Window x:Class="DodajDelegacjeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rozliczator"
+        mc:Ignorable="d"
+        Title="Delegacja" Height="450" MinWidth="600"
+        SizeToContent ="WidthAndHeight"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+       TextElement.FontWeight="Regular"
+       TextElement.FontSize="13"
+       TextOptions.TextFormattingMode="Ideal"
+       TextOptions.TextRenderingMode="Auto"
+       Background="{DynamicResource MaterialDesignPaper}"
+       FontFamily="{DynamicResource MaterialDesignFont}"
+         Icon="/Images/cseg_icon_32_32.ico">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Vertical" Width="720">
+            <StackPanel Orientation="Horizontal" Height="60">
+                <Label VerticalAlignment="Bottom" Margin="20,0,10,0">Delegowany:</Label>
+                <ComboBox Width="100"  IsEditable="False" Name="DelegowanyComboBox" Text="{Binding Delegowany}" VerticalAlignment="Bottom" />
+
+                <Label VerticalAlignment="Bottom" Margin="20,0,10,0">Numer Delegacji:</Label>
+                <TextBox TextAlignment="Center" Name="NumerDelegacji" MinWidth="150" Text="{Binding NumerDelegacji, Mode=TwoWay}" Margin="0,0,0,0"/>
+                    <Button   Style="{DynamicResource MaterialDesignFlatButton}" VerticalAlignment="Bottom" Height="50" Width="50" Click="Button_NewNumber"    >
+                        <materialDesign:PackIcon x:Name="packIcon" Kind="Plus" >                           
+                        </materialDesign:PackIcon>
+                    </Button>
+                    <Label VerticalAlignment="Bottom"  Margin="10,0,0,0"  ToolTip="Wybierz kraj w ktorym przebywales" Content="Kraj:"/>
+                <ComboBox VerticalAlignment="Bottom" x:Name="listaKrajow" IsEditable="False"   SelectionChanged="listaKrajow_SelectionChanged" Text="{Binding KrajWyjazdu}"    MinWidth="100"/>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60">
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0" ToolTip="Data Przekroczenia Granicy" Content="Wyjazd"/>
+                <DatePicker x:Name="DataWyjazduDP" Width="90"  VerticalAlignment="Bottom" SelectedDate="{Binding DataWyjazdu, StringFormat='dd/MM/yyyy HH:mm:ss'}" />
+                <materialDesign:TimePicker Is24Hours="True" x:Name="DataWyjazdTP"  SelectedTime="{Binding GodzinaWyjazdu}" VerticalAlignment="Bottom" Margin="20,0,0,0"/>
+               
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0" ToolTip="Miasto Przekroczenia Granicy">Miejsce graniczne:</Label>
+                <ComboBox Width="120"  IsEditable="True" Name="WyjazdMiastoComboBox" ToolTip="Miasto Przekroczenia Granicy"  Text="{Binding WyjazdMiasto}"  VerticalAlignment="Bottom" />
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0" ToolTip="Środek Transportu" Content="Transport:"/>
+                <ComboBox Width="100"  IsEditable="True" x:Name="WyjazdTransportComboBox" ToolTip="Środek Transportu"  Text="{Binding WyjazdTransport}"  VerticalAlignment="Bottom" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60">
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0" ToolTip="Data Przekroczenia Granicy" Content="Powrót"/>
+                <DatePicker x:Name="DataPowrotuDP" Width="90"  VerticalAlignment="Bottom" SelectedDate="{Binding DataPowrotu}"  />
+                <materialDesign:TimePicker x:Name="DataPowrotTP" Is24Hours="True" SelectedTime="{Binding GodzinaPowrotu}" VerticalAlignment="Bottom" Margin="20,0,0,0"/>
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0">Miejsce graniczne:</Label>
+                <ComboBox MinWidth="120"  IsEditable="True" Name="PowrotMiastoComboBox" ToolTip="Miasto Przekroczenia Granicy"  Text="{Binding PowrotMiasto}"  VerticalAlignment="Bottom" />
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0" ToolTip="Środek Transportu" Content="Transport:"/>
+                <ComboBox Width="100"  IsEditable="True" x:Name="PowrotTransportComboBox" ToolTip="Środek Transportu"  Text="{Binding PowrotTransport}"  VerticalAlignment="Bottom" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60">
+
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0">Kwota diety:</Label>
+                <TextBox TextAlignment="Center" Name="Kwota" Width="80" Text="{Binding KwotaDelegacji, Mode=TwoWay, StringFormat={}{0:0.00}}" Margin="0,0,0,0"/>
+                <TextBox TextAlignment="Center" Name="Waluta" Width="30" Text="{Binding Waluta}" Margin="0,0,15,0"/>
+
+                <Label VerticalAlignment="Bottom" Margin="10,0,0,0" ToolTip="Czy dieta zostala Wysłana do księgowości" Content="Wysłano?"/>
+                <CheckBox VerticalAlignment="Bottom" x:Name="Wyslano" IsChecked="{Binding Wyslano, Mode=TwoWay}" Margin="10,0,10,5" />
+
+                <DatePicker x:Name="DataRozliczeniaDP" Width="100"  VerticalAlignment="Bottom" SelectedDate="{Binding DataRozliczenia}" ToolTip="data rozliczenia/data do obliczenia kursu"  IsEnabled="{Binding Wyslano, Mode=OneWay}"  />
+                <Label VerticalAlignment="Bottom" ToolTip="Czy dieta zostala wyplacona" Content="Wypłacono?"  Margin="10,0,0,0"/>
+                <CheckBox VerticalAlignment="Bottom" x:Name="Wyplacono" IsChecked="{Binding Wyplacono, Mode=TwoWay}" Margin="10" />
+                <ComboBox Width="120"  IsEditable="False" x:Name="KontoComboBox" ToolTip="Wybierz konto bankowe z którego wypłacono"  Text="{Binding Konto}"  VerticalAlignment="Bottom" IsEnabled="{Binding Wyplacono, Mode=OneWay}" />
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Height="60">
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0">Cel Wyjazdu:</Label>
+                <ComboBox IsEditable="True" VerticalAlignment="Bottom" Name="CelComboBox" Width="100" Text="{Binding CelWyjazdu, Mode=TwoWay}" Margin="0,0,0,0"/>
+                <Label VerticalAlignment="Bottom" Margin="20,0,0,0" Content="Miejsce Wyjazdu:"/>
+                <ComboBox IsEditable="True" VerticalAlignment="Bottom" x:Name="MiejsceComboCox" Width="100" Text="{Binding MiejsceWyjazdu, Mode=TwoWay}" Margin="0,0,0,0"/>
+
+                <Label VerticalAlignment="Bottom"   Margin="20,0,0,0" ToolTip="Wybierz do której umowy o dzeło przypisać tą fakturę" Content="Wybierz UD :"/>
+                <ComboBox VerticalAlignment="Bottom" x:Name="listaUmow" IsEditable="False"  SelectedValue="{Binding NumerUmowy}" ItemsSource="{Binding UmowyListOfOsoba}" MinWidth="150"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="80" Margin="30">
+                <Label VerticalAlignment="Bottom" Margin="30,0,0,0" Visibility="{Binding WalutaPLN}">Kurs z dnia:</Label>
+                <Label VerticalAlignment="Bottom" Name="KursZDnia" Content="{Binding  KursZDnia}" ContentStringFormat="{}{0:0.0000}" Visibility="{Binding WalutaPLN}" Width="70"/>
+
+
+                <Label VerticalAlignment="Bottom" Margin="0,0,0,0" Visibility="{Binding WalutaPLN}">Kwota PLN:</Label>
+                <Label VerticalAlignment="Bottom" Margin="0,0,0,0" Name="KwotaPLN" Content="{Binding KwotaDelegacjiPLN}" ContentStringFormat="{}{0:0.00}" Visibility="{Binding WalutaPLN}" Width="80"/>
+                <Button Width="150"  Margin="100,0,80,0" Click="Button_Zapisz">Zapisz</Button>
+            </StackPanel>
+
+        </StackPanel>
+            <Expander ExpandDirection="Right" IsExpanded="False" >
+                <Expander.Header>
+                    <TextBlock Text="Pliki">
+                        <TextBlock.LayoutTransform>
+                            <RotateTransform Angle="-90"/>
+                        </TextBlock.LayoutTransform>
+                    </TextBlock>
+                </Expander.Header>
+                <StackPanel>
+                    <Label>Potwierdzenie Wyjazdu</Label>
+                    <Image Name="Plik1Image" Source="{Binding Plik1Icon}" AllowDrop="True" Drop="Plik1_Drop" Height="90" Width="90">
+                        <Image.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Dodaj" Click="RClikck_Plik1Dodaj"  FontSize="12" />
+                                <MenuItem Header="Usuń" Click="RClikck_Plik1Usun" FontSize="12" />
+                                <Separator />
+                                <MenuItem Header="Pobierz" Click="RClikck_Plik1Pobierz" FontSize="12"  />
+                            </ContextMenu>
+                        </Image.ContextMenu>
+                    </Image>
+                    <TextBlock Name="Plik1Text" Text="{Binding Plik1Name}"  MaxWidth="100"  TextWrapping="Wrap" Margin="0,00,0,20"/>
+                    
+                    <Label>Potwierdzenie Powrotu</Label>
+                    <Image Name="Plik2Image" Source="{Binding Plik2Icon}" AllowDrop="True" Drop="Plik2_Drop" Height="90" Width="90">
+                        <Image.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Dodaj" Click="RClikck_Plik2Dodaj"  FontSize="12" />
+                                <MenuItem Header="Usuń" Click="RClikck_Plik2Usun" FontSize="12" />
+                                <Separator />
+                                <MenuItem Header="Pobierz" Click="RClikck_Plik2Pobierz" FontSize="12"  />
+                            </ContextMenu>
+                        </Image.ContextMenu>
+                    </Image>
+                    <TextBlock Name="Plik2Text" Text="{Binding Plik2Name}"  MaxWidth="100"  TextWrapping="Wrap" Margin="0,0,0,0"/>
+                    <Separator></Separator>
+                    <Label>Excel</Label>
+                    <Button Width="90" Height="90"  Margin="0,0,0,0" Click="Button_Export" BorderBrush="{x:Null}" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Rozliczator;component/Images/file_excel_grey.png"/>
+                        </Button.Background>
+                        <StackPanel>
+                            <Image />
+                            
+                        </StackPanel> </Button>
+
+                </StackPanel>
+               
+               
+            </Expander>
+        </StackPanel>
+    </Grid>
+</Window>
